@@ -1,10 +1,4 @@
-{{- $IsServer := false -}}
-{{- if ge hugo.Version "0.120.0" -}}
-    {{- $IsServer = hugo.IsServer -}}
-{{- else -}}
-    {{- $IsServer = $.Site.IsServer -}}
-{{- end -}}
-{{ if and (site.Params.baiduAnalytics) (not $IsServer) }}
+{{ if and (site.Params.baiduAnalytics) (not hugo.IsServer) }}
   <script>
     {{ $baiduAnalyticsId := site.Params.baiduAnalytics }}
     var baiduAnalyticsId = JSON.parse({{ $baiduAnalyticsId | jsonify }});

@@ -1,9 +1,3 @@
-{{- $IsServer := false -}}
-{{- if ge hugo.Version "0.120.0" -}}
-    {{- $IsServer = hugo.IsServer -}}
-{{- else -}}
-    {{- $IsServer = $.Site.IsServer -}}
-{{- end -}}
-{{ if not $IsServer }}
+{{ if not hugo.IsServer }}
   {{ template "_internal/google_analytics.html" . }}
 {{ end }}
